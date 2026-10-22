@@ -1,0 +1,23 @@
+{
+  "name": "changchun-experts",
+  "description": "自建专家市场：医疗器械法规等垂直领域专家包",
+  "description_en": "Self-hosted WorkBuddy expert marketplace: vertical-domain expert packages such as NMPA medical device regulatory affairs.",
+  "owner": {
+    "name": "PotusKing",
+    "email": "PotusKing@users.noreply.github.com"
+  },
+  "metadata": {
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "nmpa-regulatory-expert",
+      "description": "NMPA medical device regulatory expert covering classification, registration, clinical evaluation, QMS inspection and post-market compliance.",
+      "source": "./plugins/nmpa-regulatory-expert",
+      "version": "1.0.0",
+      "author": {
+        "name": "PotusKing"
+      }
+    }
+  ]
+}

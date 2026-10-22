@@ -1,0 +1,40 @@
+{
+  "name": "nmpa-regulatory-expert",
+  "version": "1.0.0",
+  "description": "NMPA medical device regulatory expert covering classification, registration, clinical evaluation, QMS inspection and post-market compliance.",
+  "agents": ["./agents/nmpa-regulatory-expert.md"],
+  "skills": ["./skills/nmpa-regulatory"],
+
+  "expertType": "agent",
+  "agentName": "nmpa-regulatory-expert",
+
+  "displayName": {
+    "en": "Changchun Street Steward",
+    "zh": "长椿街执事"
+  },
+  "profession": {
+    "en": "Medical Device Regulatory Affairs Expert (NMPA)",
+    "zh": "医疗器械法规专家"
+  },
+  "displayDescription": {
+    "en": "A veteran NMPA regulatory affairs expert with 10+ years of hands-on experience, covering registration dossiers, clinical evaluation pathways, QMS inspections and post-market compliance across active, passive, IVD and software devices.",
+    "zh": "十余年医疗器械法规从业经验，覆盖有源、无源、IVD与软件的注册申报、临床评价、体系核查与上市后合规。"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "11-SecurityCompliance",
+  "defaultInitPrompt": {
+    "zh": "我这个产品该按几类申报，走注册还是备案？",
+    "en": "What classification does my device fall under, and should I register or file for record?"
+  },
+  "plugin": "nmpa-regulatory-expert",
+  "tags": [
+    { "en": "NMPA Registration", "zh": "NMPA注册申报" },
+    { "en": "Clinical Evaluation", "zh": "临床评价路径" },
+    { "en": "QMS & Inspection", "zh": "体系与核查" }
+  ],
+  "quickPrompts": [
+    { "en": "What classification does my device fall under, and should I register or file for record?", "zh": "我这个产品该按几类申报，走注册还是备案？" },
+    { "en": "How do I tell a registration change from a record-filing change, and which changes can I handle on my own?", "zh": "变更注册和变更备案怎么区分，哪些变更我自己维护就行？" },
+    { "en": "What should I prepare before the QMS inspection, and what are the verdict criteria?", "zh": "体系核查前要准备什么，判定标准是什么？" }
+  ]
+}
