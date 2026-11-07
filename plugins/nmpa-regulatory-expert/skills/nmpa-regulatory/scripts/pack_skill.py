@@ -14,6 +14,7 @@
 import argparse
 import datetime
 import os
+import re
 import zipfile
 
 SKILL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,10 +24,13 @@ VERSION = "1.0.0"
 TOP_FILES = ["SKILL.md", "README.md"]
 TOP_DIRS = ["references", "assets", "scripts"]
 EXCLUDE_NAMES = {".DS_Store", "__pycache__", ".git"}
-# 口径层例外：CMDE 共性问题（605 条问答）属于作答能力而非原文库，
-# 瘦身包也要带上；其余 source-docs 仍排除。
+# 口径层例外：这些属于「作答能力」而非「原文库」，瘦身包也要带上。
+#   - cmde-qa / official-qa：官方向答口径（605 条共性问题 + 168 问百问百答）
+#   - qms 24–33：现行 GMP 体系（2025 版规范、2026 版总则+附录篇检查指导原则、
+#     IVD/义齿附录、禁止委托目录）——判定与分级是答「查多少项、哪几项关键」的依据
 KEEP_IN_SLIM = ["references/source-docs/cmde-qa",
                 "references/source-docs/official-qa"]
+KEEP_FILE_RE = re.compile(r"^references/source-docs/qms/(2[4-9]|3[0-3])-")
 
 
 def collect(with_source_docs):
@@ -41,10 +45,11 @@ def collect(with_source_docs):
             dirs[:] = [x for x in dirs if x not in EXCLUDE_NAMES]
             rel = os.path.relpath(root, SKILL_ROOT)
             keep = any(rel == k or rel.startswith(k + os.sep) for k in KEEP_IN_SLIM)
-            # 当前目录是保留路径的祖先时不能剪枝，否则走不到子目录
+            # 当前目录是保留路径的祖先（含按文件名保留的目录）时不能剪枝
             ancestor = any(k.startswith(rel + os.sep) for k in KEEP_IN_SLIM)
+            has_file_rule = rel == "references/source-docs/qms"
             if (not with_source_docs and rel.startswith("references/source-docs")
-                    and not keep and not ancestor):
+                    and not keep and not ancestor and not has_file_rule):
                 dirs[:] = []
                 continue
             for fn in files:
@@ -52,6 +57,11 @@ def collect(with_source_docs):
                     continue
                 # 抓取中间产物（_index.json / _items.jsonl / _fetched.txt）不进包
                 if fn.startswith("_") and fn.endswith((".json", ".jsonl", ".txt")):
+                    continue
+                rel_file = os.path.join(rel, fn)
+                # source-docs 下只放行保留目录与预留文件名规则命中的文件
+                if (not with_source_docs and rel_file.startswith("references/source-docs")
+                        and not keep and not KEEP_FILE_RE.match(rel_file)):
                     continue
                 out.append(os.path.join(root, fn))
     return out
