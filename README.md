@@ -30,7 +30,7 @@ WorkBuddy → 连接器/插件管理 → **添加市场** → 填 `PotusKing/wor
 
 ## 发布前必做
 
-- [ ] 把 `.codebuddy-plugin/marketplace.json` 里的 `REPLACE_WITH_YOUR_NAME` / `REPLACE_WITH_YOUR_EMAIL` 换成真实信息
+- [x] 把 `.codebuddy-plugin/marketplace.json` 里的 `REPLACE_WITH_YOUR_NAME` / `REPLACE_WITH_YOUR_EMAIL` 换成真实信息
 - [ ] 确认要公开的内容边界：专家包内含沉淀的实务口径（qa-playbook 等），公开即授权他人使用
 - [ ] 如只想给特定人群：GitHub 私有仓库 + 给对方 collaborator 权限，同样可被「添加市场」消费
 

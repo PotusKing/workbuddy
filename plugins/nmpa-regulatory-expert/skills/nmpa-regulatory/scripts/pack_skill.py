@@ -23,6 +23,10 @@ VERSION = "1.0.0"
 TOP_FILES = ["SKILL.md", "README.md"]
 TOP_DIRS = ["references", "assets", "scripts"]
 EXCLUDE_NAMES = {".DS_Store", "__pycache__", ".git"}
+# 口径层例外：CMDE 共性问题（605 条问答）属于作答能力而非原文库，
+# 瘦身包也要带上；其余 source-docs 仍排除。
+KEEP_IN_SLIM = ["references/source-docs/cmde-qa",
+                "references/source-docs/official-qa"]
 
 
 def collect(with_source_docs):
@@ -36,11 +40,18 @@ def collect(with_source_docs):
         for root, dirs, files in os.walk(base):
             dirs[:] = [x for x in dirs if x not in EXCLUDE_NAMES]
             rel = os.path.relpath(root, SKILL_ROOT)
-            if not with_source_docs and rel.startswith("references/source-docs"):
+            keep = any(rel == k or rel.startswith(k + os.sep) for k in KEEP_IN_SLIM)
+            # 当前目录是保留路径的祖先时不能剪枝，否则走不到子目录
+            ancestor = any(k.startswith(rel + os.sep) for k in KEEP_IN_SLIM)
+            if (not with_source_docs and rel.startswith("references/source-docs")
+                    and not keep and not ancestor):
                 dirs[:] = []
                 continue
             for fn in files:
                 if fn in EXCLUDE_NAMES:
+                    continue
+                # 抓取中间产物（_index.json / _items.jsonl / _fetched.txt）不进包
+                if fn.startswith("_") and fn.endswith((".json", ".jsonl", ".txt")):
                     continue
                 out.append(os.path.join(root, fn))
     return out

@@ -34,6 +34,7 @@ python scripts/cmde_sync.py
 2. **方法学层**（`references/cmde-guidelines-index.md` + `cmde-methodology.md` + `references/source-docs/cmde/`）：CMDE 注册审查指导原则 736 项。回答「审评希望看到什么证据、研究资料怎么写」。**注意它的双重属性**：文本上写「不作为法规强制执行」，但**实操中就是强制标准**——审评拿它当尺子，偏离即发补。作答时不要因为看到「不强制」就给出「可以简化」的暗示；需要替代方法时，正确路径是先沟通交流、再举证等效（详见 `qa-playbook.md` 对应口径）。
 3. **专家观点层**（`references/expert-views.md`）：专家本人的监管理念、制度演进分析、中外比较、改革主张。回答「为什么这样设计、往哪里改」。引用时必须标明是专家个人主张，与现行法规明确区隔，两者冲突时法规优先。
 4. **专家口径层**（`references/qa-playbook.md` 及各域 reference 的【专家口径】章节）：实务判断、审评尺度、操作经验。回答「实际上怎么做、坑在哪」。
+5. **官方答复层**（`references/official-qa.md` + `references/source-docs/cmde-qa/` + `references/source-docs/official-qa/`）：药监局/器审中心对具体问题的公开答复。器审中心「共性问题」按年归档，覆盖 2014 年至今 600+ 条，是「这个问题官方怎么答」的第一顺位证据。**它不是法规，也不是指导原则**——措辞上用「审评机构的公开答复口径」，不要写成「法规规定」。
 
 ## 平台定位：咨询解答，不是图书馆
 
@@ -70,7 +71,8 @@ python scripts/cmde_sync.py
 | 上市后：变更、不良事件、再评价、召回、自查 | `references/postmarket.md` |
 | 质量管理体系（GMP）、体系核查、委托生产、飞行检查、年度自查 | `references/qms.md`（法规原文全文在 `references/source-docs/qms/`，按需检索） |
 | 某份法规是否现行、有没有新版、在哪查 | `references/regulation-index.md`（NMPA 官网抓取的法规清单与时效状态） |
-| 要查规章条文原文（注册 47/48 号、经营 54 号、GCP、GMP 及检查指导原则） | `references/source-docs/regulations/`（47/48/54/28/153/121/122 已入）+ `references/source-docs/qms/`（25/26 已入）；先 Grep 关键词再读，不整篇加载 |
+| 「这个问题官方怎么答的 / 器审中心有没有答复过」 | `references/official-qa.md`（605 条器审中心共性问题 + 168 问百问百答的总索引，先在这里定位年份与主题，再 Grep `references/source-docs/cmde-qa/` 对应年份文件） |
+| 要查规章条文原文（注册 47/48 号、经营 54 号、GCP、GMP 及检查指导原则） | `references/source-docs/regulations/`（47/48/54/28/153/121/122 已入）+ `references/source-docs/qms/`（25/26 已入；27–31 = 无菌/植入/IVD/义齿/独立软件 5 份附录篇检查指导原则，共 1,041 个检查项目）；先 Grep 关键词再读，不整篇加载 |
 | 「申报资料怎么编/要交哪些项/给一份模板」 | `assets/templates/`（器械按 121 号、IVD 按 122 号的六章 Word 模板）+ `references/premarket.md`（六章骨架与条文边界）、`ivd.md`（IVD 骨架差异）。模板由 `scripts/make_toc_templates.py` 生成，改内容改脚本不要手改 docx |
 | 「这个产品有没有审评指导原则」「这类产品的审评关注点是什么」（CMDE 736 项） | `references/cmde-guidelines-index.md`（全量目录，按域分组、标注入库状态）；正文在 `references/source-docs/cmde/`，用 Grep 检索 |
 | ISO 13485 / GB/T 42061 体系标准对标、QMS 文件体系 | `references/iso-13485.md`（标准全文待投喂，见 `references/source-docs/standards/`） |
