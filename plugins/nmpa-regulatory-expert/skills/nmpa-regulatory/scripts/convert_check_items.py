@@ -28,18 +28,19 @@ def load_rows(path):
     header = [norm(c.text) for c in t.rows[0].cells]
     idx = {}
     for i, h in enumerate(header):
+        # 注意顺序：「规范条款/附录条款」也含「条款」二字，必须先判依据列
         if "章节" in h:
             idx["chapter"] = i
         elif "序号" in h:
             idx["no"] = i
+        elif "依据" in h or "规范条款" in h or "附录条款" in h:
+            idx["ref"] = i
         elif "条款" in h:
             idx["clause"] = i
         elif "内容" in h:
             idx["content"] = i
         elif "风险" in h:
             idx["risk"] = i
-        elif "依据" in h or "规范条款" in h:
-            idx["ref"] = i
     need = {"chapter", "clause", "content", "risk"}
     if not need.issubset(idx):
         raise SystemExit("表头不匹配：%s" % header)
@@ -111,7 +112,8 @@ def main():
             ref = r.get("ref", "")
             line = "- **%s**（%s）%s" % (r["clause"], risk_label(r["risk"]), multiline(r["content"]))
             if ref:
-                line += "　—《%s》" % ref.strip("《》")
+                # 原文已带《》时不要重复包裹（如「《规范》第三条」）
+                line += "　—" + (ref if ref.startswith("《") else "《%s》" % ref)
             out.append(line)
         out.append("")
 

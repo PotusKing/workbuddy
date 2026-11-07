@@ -89,7 +89,7 @@ def main():
     for k in sorted(by):
         print("  %-12s %7.1f KB" % (k, by[k] / 1024.0))
     if not args.with_source_docs:
-        print("注：已排除 references/source-docs/（原文库），收包方按 SKILL.md bootstrap 自建。")
+        print("注：已排除 references/source-docs/ 原文库（保留 cmde-qa 与 official-qa 两个口径目录），收包方按 SKILL.md bootstrap 自建。")
     print("打包时间：%s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 
