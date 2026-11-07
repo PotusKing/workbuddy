@@ -18,20 +18,25 @@
 
 ```
 SKILL.md                     行为规则：定位、知识分层、回答工作流、术语纪律、维护机制
-references/                  导航层（16 个域文件，全部为解读，非原文）
+references/                  导航层（17 个域文件，全部为解读，非原文）
   qa-playbook.md             专家口径总表（已校准的实务判断）
   premarket.md / ivd.md      上市前注册：六章骨架、条文边界、时限
   qms.md / postmarket.md     体系核查、经营与上市后
   cmde-guidelines-index.md   CMDE 指导原则全量目录（1193 条，按域 + 按通告号）
   cmde-methodology.md        指导原则的方法学纪律（效力、结构、检索规则）
-  official-qa.md             药监局答复口径索引
+  official-qa.md             药监局答复口径索引（605 条器审中心共性问题 + 168 问百问百答）
+  us-fda.md                  美国 FDA 参照层（分类逻辑、路径判定、FY2027 收费、QMSR、中美对照）
   expert-views.md            专家个人主张（与现行法规严格区隔）
   regulation-index.md        法规时效状态清单（哪份现行、哪份被替代）
 assets/templates/            申报资料模板（器械按 121 号、IVD 按 122 号的六章 Word 模板）
 scripts/                     抓取与生成工具（CMDE 同步、索引重建、模板生成、PDF OCR）
 ```
 
-**发布版不包含 `references/source-docs/`**（法规、标准、官方答复、指导原则正文，约 8.5MB）。索引层与口径层是完整的，缺原文库不影响作答。
+**发布版不含绝大部分 `references/source-docs/`**（法规汇编、指导原则正文等约 12MB）。以下三类例外会随包发布，因为它们是「作答能力」而非「原文库」：
+
+- `source-docs/cmde-qa/`（605 条共性问题 + 时效敏感清单）、`source-docs/official-qa/`
+- `source-docs/qms/24-33`（2025 版 GMP 规范、2026 版检查指导原则总则+附录篇、IVD/义齿附录）
+- `source-docs/us-fda/`（21 CFR 803/806/807/812/814/820/830/860 全文）
 
 ## 首次使用
 

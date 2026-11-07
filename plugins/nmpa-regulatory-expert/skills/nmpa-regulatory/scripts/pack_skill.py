@@ -19,7 +19,7 @@ import zipfile
 
 SKILL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILL_NAME = os.path.basename(SKILL_ROOT)
-VERSION = "1.0.0"
+VERSION = "1.2.0"
 
 TOP_FILES = ["SKILL.md", "README.md"]
 TOP_DIRS = ["references", "assets", "scripts"]
@@ -29,7 +29,8 @@ EXCLUDE_NAMES = {".DS_Store", "__pycache__", ".git"}
 #   - qms 24–33：现行 GMP 体系（2025 版规范、2026 版总则+附录篇检查指导原则、
 #     IVD/义齿附录、禁止委托目录）——判定与分级是答「查多少项、哪几项关键」的依据
 KEEP_IN_SLIM = ["references/source-docs/cmde-qa",
-                "references/source-docs/official-qa"]
+                "references/source-docs/official-qa",
+                "references/source-docs/us-fda"]
 KEEP_FILE_RE = re.compile(r"^references/source-docs/qms/(2[4-9]|3[0-3])-")
 
 
@@ -99,7 +100,7 @@ def main():
     for k in sorted(by):
         print("  %-12s %7.1f KB" % (k, by[k] / 1024.0))
     if not args.with_source_docs:
-        print("注：已排除 references/source-docs/ 原文库（保留 cmde-qa 与 official-qa 两个口径目录），收包方按 SKILL.md bootstrap 自建。")
+        print("注：已排除 references/source-docs/ 原文库（保留 cmde-qa / official-qa 口径目录、qms/24-33 现行 GMP 体系、us-fda 8 份 CFR），收包方按 SKILL.md bootstrap 自建。")
     print("打包时间：%s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 
