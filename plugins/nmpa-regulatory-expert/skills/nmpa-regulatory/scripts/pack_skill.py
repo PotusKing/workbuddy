@@ -19,7 +19,7 @@ import zipfile
 
 SKILL_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SKILL_NAME = os.path.basename(SKILL_ROOT)
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 
 TOP_FILES = ["SKILL.md", "README.md"]
 TOP_DIRS = ["references", "assets", "scripts"]
@@ -28,6 +28,8 @@ EXCLUDE_NAMES = {".DS_Store", "__pycache__", ".git"}
 #   - cmde-qa / official-qa：官方向答口径（605 条共性问题 + 168 问百问百答）
 #   - qms 24–33：现行 GMP 体系（2025 版规范、2026 版总则+附录篇检查指导原则、
 #     IVD/义齿附录、禁止委托目录）——判定与分级是答「查多少项、哪几项关键」的依据
+#   - us-fda：美国参照层三层原文（法案 47 条 + 21 CFR 8 份 + guidance 600 份
+#     清单与 45 份全文）。中美对照要能落到原文，否则只能凭印象。
 KEEP_IN_SLIM = ["references/source-docs/cmde-qa",
                 "references/source-docs/official-qa",
                 "references/source-docs/us-fda"]
@@ -100,7 +102,9 @@ def main():
     for k in sorted(by):
         print("  %-12s %7.1f KB" % (k, by[k] / 1024.0))
     if not args.with_source_docs:
-        print("注：已排除 references/source-docs/ 原文库（保留 cmde-qa / official-qa 口径目录、qms/24-33 现行 GMP 体系、us-fda 8 份 CFR），收包方按 SKILL.md bootstrap 自建。")
+        print("注：已排除 references/source-docs/ 原文库（保留 cmde-qa / official-qa 口径目录、"
+              "qms/24-33 现行 GMP 体系、us-fda 三层原文：法案 47 条 + CFR 8 份 + guidance 清单与 45 份全文），"
+              "收包方按 SKILL.md bootstrap 自建。")
     print("打包时间：%s" % datetime.datetime.now().strftime("%Y-%m-%d %H:%M"))
 
 

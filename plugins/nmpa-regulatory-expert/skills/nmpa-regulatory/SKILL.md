@@ -35,11 +35,14 @@ python scripts/cmde_sync.py
 3. **专家观点层**（`references/expert-views.md`）：专家本人的监管理念、制度演进分析、中外比较、改革主张。回答「为什么这样设计、往哪里改」。引用时必须标明是专家个人主张，与现行法规明确区隔，两者冲突时法规优先。
 4. **专家口径层**（`references/qa-playbook.md` 及各域 reference 的【专家口径】章节）：实务判断、审评尺度、操作经验。回答「实际上怎么做、坑在哪」。
 5. **官方答复层**（`references/official-qa.md` + `references/source-docs/cmde-qa/` + `references/source-docs/official-qa/`）：药监局/器审中心对具体问题的公开答复。器审中心「共性问题」按年归档，覆盖 2017 年至今 605 条，是「这个问题官方怎么答」的第一顺位证据。**它不是法规，也不是指导原则**——措辞上用「审评机构的公开答复口径」，不要写成「法规规定」。**2019 年及以前（170 条）属高时效风险**，引用前必须核对现行规定。
-6. **参照层·美国 FDA**（`references/us-fda.md` + `references/source-docs/us-fda/` 8 份 21 CFR 全文）：**不是第二个主域，是参照**。只在三种情形启用：用户明确问美国/出海/FDA；用户问中美差异；用户问「为什么中国要这样」需要制度解释。
+6. **参照层·美国 FDA**（`references/us-fda.md` + `references/source-docs/us-fda/` 三层原文）：**不是第二个主域，是参照**。只在三种情形启用：用户明确问美国/出海/FDA；用户问中美差异；用户问「为什么中国要这样」需要制度解释。
+   - **原文分三层，先判断问题属于哪层再检索**：`fdc-act/`（47 条法案原文，答「凭什么管、多久、多少钱」）→ 21 CFR 8 份（答「具体交什么」）→ `guidance/`（600 份清单 + 45 份核心全文，答「FDA 怎么把握尺度」）。
    - **主作答口径永远是中国 NMPA**。不要主动把美国做法当建议推给用户——两国法律基础不同（美国靠 predicate 复用证据 + 事后追责；中国靠目录分类 + 上市前行政许可），直接移植会出错。
    - 讲差异时**先讲机制、再讲代价**，不做好坏评判。可以说明「美国模式的三个结构性优势」与「三个必须一并说明的代价」，但不能得出「中国落后」的结论。
    - 中美**不互认**：FDA 清关≠中国可注册，CE≠美国可上市。
    - 数字必须带年份：FDA 收费按财年（10-01 起算，现行 FY2027），MDUFA V 授权到 2027-09-30。
+   - **guidance 的效力是 nonbinding recommendation**：原文用 *should / recommend / FDA believes*，不是 *must*。答话说「FDA 建议」「guidance 推荐」，**不要说「FDA 要求必须」**——与中国的指导原则同一种性质，两边都不要越界。
+   - **两处法条位置易错，已按原文核实**：510(k) 是 **§360(k)**（不是 §360j）；**§360j(f) 是 GMP**（QMSR 的法律依据）。另 §360j(o) 是医疗器械与临床决策支持软件的界限条款。
 
 ## 平台定位：咨询解答，不是图书馆
 
@@ -77,7 +80,7 @@ python scripts/cmde_sync.py
 | 质量管理体系（GMP）、体系核查、委托生产、飞行检查、年度自查 | `references/qms.md`（法规原文全文在 `references/source-docs/qms/`，按需检索） |
 | 某份法规是否现行、有没有新版、在哪查 | `references/regulation-index.md`（NMPA 官网抓取的法规清单与时效状态） |
 | 「这个问题官方怎么答的 / 器审中心有没有答复过」 | `references/official-qa.md`（605 条器审中心共性问题 + 168 问百问百答的总索引，先在这里定位年份与主题，再 Grep `references/source-docs/cmde-qa/` 对应年份文件）。**2019 年及以前的必须先看 `00-时效敏感清单.md`**——那批答复早于 47/48 号令、自检制度、2022 版软件/网安指导原则、UDI、2026 版 GMP，直接引用会给出过时结论 |
-| 美国 FDA：这个产品怎么进美国 / 中美有什么差别 / 为什么中国这样规定 | `references/us-fda.md`（法规架构、分类逻辑、路径判定树、FY2027 收费、QMSR、中美对照表、8 类常见误区）+ `references/source-docs/us-fda/`（21 CFR 803/806/807/812/814/820/830/860 全文）。**先答中国，再答美国，最后讲机制差异**；不要用中国概念套美国（美国没有"注册证""生产许可""体系核查""分类目录"的对应物） |
+| 美国 FDA：这个产品怎么进美国 / 中美有什么差别 / 为什么中国这样规定 | `references/us-fda.md`（法规架构、分类逻辑、路径判定树、FY2027 收费、QMSR、中美对照表、8 类常见误区）+ `references/source-docs/us-fda/`（**三层**：`fdc-act/` 47 条法案原文、21 CFR 803/806/807/812/814/820/830/860 全文、`guidance/` 600 份清单 + 45 份核心全文）。**先答中国，再答美国，最后讲机制差异**；不要用中国概念套美国（美国没有"注册证""生产许可""体系核查""分类目录"的对应物）。问「美国有没有相关指导原则」→ 先查 `guidance/00-清单.md` |
 | 要查规章条文原文（注册 47/48 号、经营 54 号、GCP、GMP 及检查指导原则） | `references/source-docs/regulations/`（47/48/54/28/153/121/122 已入）+ `references/source-docs/qms/`（25/26 已入；27–31 = 无菌/植入/IVD/义齿/独立软件 5 份附录篇检查指导原则，共 1,041 个检查项目）；先 Grep 关键词再读，不整篇加载 |
 | 「申报资料怎么编/要交哪些项/给一份模板」 | `assets/templates/`（器械按 121 号、IVD 按 122 号的六章 Word 模板）+ `references/premarket.md`（六章骨架与条文边界）、`ivd.md`（IVD 骨架差异）。模板由 `scripts/make_toc_templates.py` 生成，改内容改脚本不要手改 docx |
 | 「这个产品有没有审评指导原则」「这类产品的审评关注点是什么」（CMDE 736 项） | `references/cmde-guidelines-index.md`（全量目录，按域分组、标注入库状态）；正文在 `references/source-docs/cmde/`，用 Grep 检索 |
@@ -154,10 +157,11 @@ python scripts/cmde_sync.py
 4. 每次更新口径时标注日期（格式：`[YYYY-MM-DD]`），便于追溯。
 5. **CMDE 指导原则增量同步**：`scripts/cmde_sync.py` 只抓新增正式稿并重建 `references/cmde-guidelines-index.md`。已配定时任务，**每 10 周（≈50 个工作日）周一 09:00** 跑一次（指导原则发布节奏慢，周更无意义）。注意它依赖「真实 Chrome + 持久化 profile」绕过瑞数 WAF，无法在纯无头环境跑。正文库只保留 270 份通用/方法学类（约 8MB），产品专用稿归档在 `~/.workbuddy/nmpa-cmde-archive/`，需要时 `cmde_crawl.py docs --only 关键词` 单篇抓回。
 6. **模板类交付物**：`assets/templates/` 下的 docx 一律由 `scripts/make_toc_templates.py` 生成，改内容改脚本后重跑，不要直接编辑 docx——否则下次重生成会覆盖。模板内的「原文要求」框必须逐字对齐 121/122 号公告，不得改写。
-7. **美国参照层时效**（`references/us-fda.md`）：三样东西会变，变了必须改——
+7. **美国参照层时效**（`references/us-fda.md`）：四样东西会变，变了必须改——
    - **收费**：每财年（10-01 起）调整一次，改 Federal Register 通知。现行 FY2027。
    - **MDUFA 授权**：MDUFA V 到 2027-09-30 截止，MDUFA VI 重新授权后费率与绩效目标整体换新，届时整节重写。
    - **21 CFR 修订**：eCFR 版本日期更新后，用 `scripts/ecfr2md.py` 重抓即可（`https://www.ecfr.gov/api/versioner/v1/full/{日期}/title-21.xml?part={编号}`，必须带 `--compressed`）。
+   - **法案与 guidance**：`scripts/build_fdc_act.py` 重建法案层（改 `EDITION` 常量指向新的 USCODE 年份）；`scripts/fetch_cdrh_guidance.py` + `scripts/dl_cdrh_guidance.py` 刷新清单与全文（`PICKS` 里维护目标清单）。**这两个脚本必须走真实 Chrome**——`www.fda.gov` 与 `accessdata.fda.gov` 对 curl 直连返回假 404/连接重置。
    2026 年已发生的重大变化：**QMSR 于 2026-02-02 生效，QSR 同日废止，QSIT 停用改 7382.850**。凡引用 2026 年 2 月前资料，都要核对是否还在说 QSR。
 
 ## references 文件维护约定
