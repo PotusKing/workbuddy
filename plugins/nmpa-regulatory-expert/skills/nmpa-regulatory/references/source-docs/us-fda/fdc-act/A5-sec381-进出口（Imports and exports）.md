@@ -4,7 +4,7 @@
 
 ## § 381. Imports and exports
 
-> 【本条规定什么】§801。进口报关扣留（detention）、拒绝入境、出口豁免的法定依据。
+> 【本条规定什么】§801。进口报关扣留（detention）、拒绝入境、出口豁免的法定依据。**(e)(1) 是出口豁免的四个条件，(e)(2) 列出拿不到豁免的三类器械，(e)(4) 是 CFG（对国外政府证书）的签发时限与收费**。
 
 ### (a) Imports; list of registered foreign establishments; samples from unregistered foreign establishments; examination and refusal of admission
 

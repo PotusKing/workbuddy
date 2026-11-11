@@ -222,8 +222,11 @@ def load_list():
     return d if isinstance(d, list) else (d.get("data") or [])
 
 
-def write_index(recs, picks):
-    """全量清单 -> 00-清单.md"""
+def write_index(recs, picks, targets=None):
+    """全量清单 -> 00-清单.md
+
+    targets 是 [(组, 中文名, 理由, rec)]，用它填「已抓全文」表的日期与 ★ 标记。
+    """
     rows = []
     for r in recs:
         t = plain(unesc(r.get("title")))
@@ -240,32 +243,49 @@ def write_index(recs, picks):
         return (m.group(3), m.group(1), m.group(2)) if m else ("0000", "00", "00")
     rows.sort(key=key, reverse=True)
 
+    # 已抓全文的原題集合（用于 ★ 标记）
+    full_titles = set()
+    if targets:
+        for _, _, _, r in targets:
+            full_titles.add(plain(unesc(r.get("title"))).lower())
+
+    import datetime
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+
     out = [
         "# CDRH 器械 guidance 全量清单",
         "",
         "> 来源：FDA 官网 datatables 接口 `cdrh-guidance-documents.json`",
-        "> 抓取时点：见本文件末尾。共 %d 条（Final %d / Draft %d）。" % (
+        "> 抓取时点：%s" % now,
+        "> 共 %d 条（Final %d / Draft %d）。" % (
             len(rows),
             sum(1 for x in rows if x[1] == "Final"),
             sum(1 for x in rows if x[1] == "Draft")),
         "> 说明：本清单是「有没有相关 guidance」的检索入口。"
         "标 ★ 的是已抓全文入库的骨架级文件，正文见同目录。",
         "",
-        "## 已抓全文的 %d 份" % len(picks),
+        "## 已抓全文的 %d 份" % (len(targets) if targets else len(picks)),
         "",
-        "| 组 | guidance | 日期 |",
-        "|---|---|---|",
+        "| 组 | guidance | 发布日 | 状态 |",
+        "|---|---|---|---|",
     ]
-    for grp, frag, cn, why in picks:
-        out.append("| %s | %s | — |" % (grp, cn))
+    if targets:
+        for grp, cn, why, r in targets:
+            out.append("| %s | %s | %s | %s |" % (
+                grp, cn,
+                plain(r.get("field_issue_datetime")),
+                plain(r.get("field_final_guidance_1"))))
+    else:
+        for grp, frag, cn, why in picks:
+            out.append("| %s | %s | — | — |" % (grp, cn))
     out += ["", "## 全量清单（按发布日倒序）", ""]
 
     for dt, st, t, tp, dk, p in rows:
-        star = " ★" if any(f.lower() in t.lower() for _, f, _, _ in picks) else ""
+        star = " ★" if t.lower() in full_titles else ""
         link = "[PDF](%s%s)" % (BASE, p) if p else "—"
-        out.append("- `%s` **%s**%s · %s · %s · %s" % (
-            dt or "—", st or "—", star, t, tp or "—", link))
-    out += ["", "---", "", "生成脚本：`scripts/fetch_cdrh_guidance.py`", ""]
+        out.append("- `%s` **%s**%s · %s · %s · %s · %s" % (
+            dt or "—", st or "—", star, t, tp or "—", dk or "—", link))
+    out += ["", "---", "", "生成脚本：`scripts/fetch_cdrh_guidance.py`，抓取时点 %s" % now, ""]
     p = os.path.join(OUT, "00-清单.md")
     open(p, "w", encoding="utf-8").write("\n".join(out) + "\n")
     print("清单写入:", p, len("\n".join(out)), "字符")
@@ -292,7 +312,7 @@ def main():
         targets.append((grp, cn, why, r))
     print("命中 %d / 目标 %d，未命中: %s" % (len(targets), len(PICKS), miss))
 
-    write_index(recs, PICKS)
+    write_index(recs, PICKS, targets)
     json.dump([{"grp": g, "cn": c, "why": w,
                 "title": plain(unesc(r.get("title"))),
                 "date": plain(r.get("field_issue_datetime")),
