@@ -1294,7 +1294,7 @@
 -  [戊型肝炎病毒IgM/IgG抗体检测试剂注册审查指导原则（2022年第36号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008141645139.html)
 -  [质控品注册审查指导原则——质控品赋值研究（2022年第36号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008110744166.html)
 -  [体外诊断试剂参考区间确定注册审查指导原则（2022年第36号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008110653121.html)
--  [定性检测体外诊断试剂分析性能评估注册审查指导原则（2022年第36号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008110559100.html)
+- ✅ [定性检测体外诊断试剂分析性能评估注册审查指导原则（2022年第36号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008110559100.html)
 -  [人类免疫缺陷病毒抗原抗体检测试剂临床前注册审查指导原则（2022年第36号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008141752180.html)
 
 ### 无源/材料
@@ -1368,7 +1368,7 @@
 
 ### IVD
 
--  [定量检测体外诊断试剂分析性能评估注册审查指导原则(2022年第32号)](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008092521132.html)
+- ✅ [定量检测体外诊断试剂分析性能评估注册审查指导原则(2022年第32号)](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20221008092521132.html)
 
 ### 其他产品类
 
@@ -1412,7 +1412,7 @@
 
 ### 其他产品类
 
--  [医疗器械产品技术要求编写指导原则（2022年第8号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20220210140832560.html)
+- ✅ [医疗器械产品技术要求编写指导原则（2022年第8号）](https://www.cmde.org.cn/flfg/zdyz/zdyzwbk/20220210140832560.html)
 
 ### 有源/电气
 
