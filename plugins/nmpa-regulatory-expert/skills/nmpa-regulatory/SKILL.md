@@ -84,6 +84,7 @@ python scripts/cmde_sync.py
 | 分类判定、管理类别、注册 vs 备案 | `references/classification.md` |
 | 首次注册/变更/延续的资料体系与审评逻辑 | `references/premarket.md` |
 | 进口产品上市策略：特许使用 → 正式注册 → 境内生产 → 支付身份的节奏设计、博鳌/大湾区该不该走、真研数据值不值得攒 | `references/import-strategy.md`（**策略层，只放判断不放条款**；含七跳判断链、反向判据、五个待校准空白）。条款本体仍在 `premarket.md` |
+| 中美机制差异的**为什么**：为什么中国这样规定、中美双报资料能否复用、「变更/分类/体系」是不是同一件事 | `references/mechanism-chains.md`（**机制接龙层**，六条链从「谁举证、何时结算、结算结果以什么形式存在」推出；含 6 条重学修订与支付端共同空白）。**先走链条，再回 `us-fda.md` 第十节看速查表**，只念并列对照表答不到根上 |
 | 临床评价路径（豁免/同品种/临床试验） | `references/clinical.md` |
 | 有源产品特有要求 | `references/active.md` |
 | 无源产品特有要求 | `references/passive.md` |
